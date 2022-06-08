@@ -9,14 +9,12 @@ public class Capacitacion {
 	public Capacitacion(String identificador, String dia, String hora, String lugar, int duracion,
 			int cantidadAsistentes, Cliente cliente) {
 		this.identificador = identificador;
-		this.rutCliente = cliente.getRut();
+		this.rutCliente = cliente.getRut(); //ver si debo cambiar esto o no 
 		this.dia = dia;
 		this.hora = hora;
 		this.lugar = lugar;
 		this.duracion = duracion;
 		this.cantidadAsistentes = cantidadAsistentes;
-		this.cliente = cliente;
-		cliente.agregaCapacitacion(this);
 	}
 
 	public Capacitacion() {

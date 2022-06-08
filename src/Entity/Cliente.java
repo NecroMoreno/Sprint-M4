@@ -4,19 +4,17 @@ import java.util.ArrayList;
 
 import Interface.IAsesoria;
 
-public class Cliente extends Usuario implements IAsesoria{
+public class Cliente extends Usuario implements IAsesoria {
 
-	private String nombres, apellidos, rut, telefono, afp, sistemaSalud, direccion, comuna;
-	private int edad;
-	private ArrayList<Capacitacion> capacitaciones;
+	private String rut, telefono, afp, direccion, comuna;
+	private int edad, sistemaSalud;
+
 	private ArrayList<Accidente> accidentes;
 	private ArrayList<VisitaTerreno> visitasTerreno;
 
 	public Cliente(String nombreUsuario, String fechaNacimiento, String run, String nombres, String apellidos,
-			String rut, String telefono, String afp, String sistemaSalud, String direccion, String comuna, int edad) {
-		super(nombreUsuario, fechaNacimiento, run);
-		this.nombres = nombres;
-		this.apellidos = apellidos;
+			String rut, String telefono, String afp, int sistemaSalud, String direccion, String comuna, int edad) {
+		super(nombreUsuario, nombres, apellidos, fechaNacimiento, run);
 		this.rut = rut;
 		this.telefono = telefono;
 		this.afp = afp;
@@ -24,25 +22,8 @@ public class Cliente extends Usuario implements IAsesoria{
 		this.direccion = direccion;
 		this.comuna = comuna;
 		this.edad = edad;
-		this.capacitaciones = new ArrayList<Capacitacion>();
 		this.accidentes = new ArrayList<Accidente>();
 		this.visitasTerreno = new ArrayList<VisitaTerreno>();
-	}
-
-	public String getNombres() {
-		return nombres;
-	}
-
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
-	}
-
-	public String getApellidos() {
-		return apellidos;
-	}
-
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
 	}
 
 	public String getRut() {
@@ -69,11 +50,11 @@ public class Cliente extends Usuario implements IAsesoria{
 		this.afp = afp;
 	}
 
-	public String getSistemaSalud() {
+	public int getSistemaSalud() {
 		return sistemaSalud;
 	}
 
-	public void setSistemaSalud(String sistemaSalud) {
+	public void setSistemaSalud(int sistemaSalud) {
 		this.sistemaSalud = sistemaSalud;
 	}
 
@@ -101,16 +82,47 @@ public class Cliente extends Usuario implements IAsesoria{
 		this.edad = edad;
 	}
 
-	public void agregaCapacitacion(Capacitacion capacitacion) {
-		this.capacitaciones.add(capacitacion);
-	}
-
 	public void agregaAccidente(Accidente accidente) {
 		this.accidentes.add(accidente);
 	}
 
 	public void agregaVisitaTerreno(VisitaTerreno visitaTerreno) {
 		this.visitasTerreno.add(visitaTerreno);
+	}
+
+	public String obtenerNombre() {
+		String nombreCompleto = super.getNombres() + " " + super.getApellidos();
+		return nombreCompleto;
+
+	}
+
+	public String obtenerSistemaSalud() {
+
+		String sistemaSaludToString = "";
+
+		switch (sistemaSalud) {
+
+		case 1:
+			sistemaSaludToString = "Fonasa";
+			break;
+		case 2:
+			sistemaSaludToString = "Isapre";
+
+		}
+		return sistemaSaludToString;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "Cliente [rut=" + rut + ", telefono=" + telefono + ", afp=" + afp + ", sistemaSalud="
+				+ sistemaSalud + ", direccion=" + direccion + ", comuna=" + comuna + ", edad=" + edad + ", accidentes="
+				+ accidentes + ", visitasTerreno=" + visitasTerreno + "]";
+	}
+
+	@Override
+	public String analizarUsuario() {
+		String expresion = super.analizarUsuario() + "\n[Direccion: " + direccion + "]" + "\n[Comuna: " + comuna + "]";
+		return expresion;
 	}
 
 }

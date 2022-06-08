@@ -4,38 +4,20 @@ import Interface.IAsesoria;
 
 public class Profesional extends Usuario implements IAsesoria{
 
-	String nombres, apellidos, titulo, fechaIngreso; // se agrega nombre y apellido ya que estos pueden no corresponder
+	String titulo, fechaIngreso; // se agrega nombre y apellido ya que estos pueden no corresponder
 	// exactamente al nombre de usuario
-
-	public Profesional(String nombreUsuario, String fechaNacimiento, String run, String nombres, String apellidos,
+	
+	public Profesional(String nombreUsuario, String nombres, String apellidos, String fechaNacimiento, String run,
 			String titulo, String fechaIngreso) {
-		super(nombreUsuario, fechaNacimiento, run);
-		this.nombres = nombres;
-		this.apellidos = apellidos;
+		super(nombreUsuario, nombres, apellidos, fechaNacimiento, run);
 		this.titulo = titulo;
 		this.fechaIngreso = fechaIngreso;
 	}
-
-	public String getNombres() {
-		return nombres;
-	}
-
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
-	}
-
-	public String getApellidos() {
-		return apellidos;
-	}
-
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-
+	
 	public String getTitulo() {
 		return titulo;
 	}
-
+	
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
@@ -47,10 +29,17 @@ public class Profesional extends Usuario implements IAsesoria{
 	public void setFechaIngreso(String fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
-	
+
 	@Override
 	public String analizarUsuario() {
-		return null;
+		String expresion = super.analizarUsuario() + "\nProfesional [titulo=" + titulo + ", fechaIngreso=" + fechaIngreso + "]";
+		return expresion;
+	}
+
+	@Override
+	public String toString() {
+		return "Profesional [titulo=" + titulo + ", fechaIngreso=" + fechaIngreso + ", toString()=" + super.toString()
+				+ "]";
 	}
 
 }
