@@ -77,4 +77,19 @@ public class Capacitacion {
 		this.cantidadAsistentes = cantidadAsistentes;
 	}
 
+	public String mostrarDetalle() {
+		
+		return  "La capacitación será en " + lugar + " a las " + hora + " del día " + dia + ", y durará " + duracion + " minutos."; 
+		
+	}
+	
+	@Override
+	public String toString() {
+		return "Capacitacion [identificador=" + identificador + ", rutCliente=" + rutCliente + ", dia=" + dia
+				+ ", hora=" + hora + ", lugar=" + lugar + ", duracion=" + duracion + ", cantidadAsistentes="
+				+ cantidadAsistentes + ", cliente=" + cliente + "]";
+	}
+	
+	
+
 }

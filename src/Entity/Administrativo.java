@@ -2,7 +2,7 @@ package Entity;
 
 import Interface.IAsesoria;
 
-public class Administrativo extends Usuario implements IAsesoria{
+public class Administrativo extends Usuario implements IAsesoria {
 
 	private String area, experienciaPrevia; // se agrega nombre y apellido ya que estos pueden no
 	// corresponder exactamente al nombre de usuario
@@ -13,7 +13,7 @@ public class Administrativo extends Usuario implements IAsesoria{
 		this.area = area;
 		this.experienciaPrevia = experienciaPrevia;
 	}
-	
+
 	public String getArea() {
 		return area;
 	}
@@ -32,7 +32,15 @@ public class Administrativo extends Usuario implements IAsesoria{
 
 	@Override
 	public String analizarUsuario() {
-		return null;
+		String expresion = super.analizarUsuario() + "\nAdministrativo [area=" + area + ", experienciaPrevia="
+				+ experienciaPrevia + "]";
+		return expresion;
+	}
+
+	@Override
+	public String toString() {
+		return "Administrativo [area=" + area + ", experienciaPrevia=" + experienciaPrevia + ", toString()="
+				+ super.toString() + "]";
 	}
 
 }
